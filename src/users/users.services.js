@@ -10,9 +10,9 @@ const getAllUsers = (req, res) => {
         })
 }
 
-const getUsersById = (req, res) => {
-    const id = Number (req.params.id)
-    usersControllers.findUsersById(id)
+const getUserById = (req, res) => {
+    const id = req.params.id
+    usersControllers.findUserById(id)
         .then(data => {
             if (data) {
                 res.status(200).json(data)
@@ -39,6 +39,6 @@ const postNewUser = (req,res) => {
 
 module.exports = {
     getAllUsers,
-    getUsersById,
+    getUserById,
     postNewUser
 }

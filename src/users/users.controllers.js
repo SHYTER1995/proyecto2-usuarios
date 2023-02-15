@@ -1,12 +1,12 @@
 const usersDb = []
-const baseId = 0
+let baseId = 0
 
 const findAllUsers = async() => {
-    return await usersDb
+    return usersDb
 }
 
-const findUsersById = async(id) => {
-    const filteredUser = await usersDb.find(user => Number(user.id) === id)
+const findUserById = async(id) => {
+    const filteredUser = await usersDb.find((user) => user.id == id)
     return filteredUser
 }
 
@@ -17,7 +17,7 @@ const createUser = async(userObject) => {
         lastName: userObject.lastName,
         email: userObject.email,
         password: userObject.password,
-        age: userObject.age
+        age: userObject.age,
     }
     await usersDb.push(newUser)
     return newUser
@@ -25,6 +25,6 @@ const createUser = async(userObject) => {
 
 module.exports = {
     findAllUsers,
-    findUsersById,
+    findUserById,
     createUser
 }
